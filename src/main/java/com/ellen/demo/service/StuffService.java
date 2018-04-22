@@ -13,7 +13,7 @@ public class StuffService {
     private StuffRepository stuffRepository;
 
     @Transactional
-    public void addTranMultiple(){
+    public void addMultiple(){
         Stuff stuffA = new Stuff();
         stuffA.setName("thingA");
         stuffA.setQuantity(10);
@@ -23,19 +23,6 @@ public class StuffService {
         stuffA.setName("thingB");
         stuffA.setQuantity(100);
         stuffRepository.save(stuffB);
-
-    }
-
-    public void addMultiple(){
-        Stuff stuffC = new Stuff();
-        stuffC.setName("thingC");
-        stuffC.setQuantity(10);
-        stuffRepository.save(stuffC);
-
-        Stuff stuffD = new Stuff();
-        stuffD.setName("thingD");
-        stuffD.setQuantity(100);
-        stuffRepository.save(stuffD);
 
     }
 }
