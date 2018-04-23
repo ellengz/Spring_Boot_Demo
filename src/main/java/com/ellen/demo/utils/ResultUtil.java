@@ -17,6 +17,7 @@ public class ResultUtil {
         return result;
     }
 
+    // for method such as Delete
     public static Result success() {
         return success(null);
     }

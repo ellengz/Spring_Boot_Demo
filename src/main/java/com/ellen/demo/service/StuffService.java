@@ -36,8 +36,8 @@ public class StuffService {
      */
     public Result addOne(Stuff stuff){
 
-        // alphabetical name
-        if (!stuff.getName().matches("[a-zA-Z]+")) {
+        // letters or numbers
+        if (!stuff.getName().matches("[a-zA-Z0-9]+")) {
             throw new StuffException(ResultEnum.ILLEGAL_NAME);
         }
 
@@ -50,29 +50,6 @@ public class StuffService {
 
         return ResultUtil.success(stuffRepository.save(stuff));
     }
-
-    /**
-     * search by Id
-     * @param id
-     * @return Result to indicate error or success
-     */
-    public Result searchById(Integer id) {
-        if (stuffRepository.findById(id).isPresent()) {
-            return ResultUtil.success(stuffRepository.findById(id).get());
-        } else {
-            throw new StuffException(ResultEnum.ID_NOT_EXIST);
-        }
-    }
-
-    /**
-     * search by Id
-     * @param name
-     * @return Result to indicate error or success
-     */
-    public Result searchByName(String name) {
-        return ResultUtil.success(stuffRepository.findStuffsByName(name));
-    }
-
 
     /**
      * use @Transactional to add multiple stuffs
@@ -89,5 +66,34 @@ public class StuffService {
             results.add(addOne(stuff));
         }
         return results;
+    }
+
+    public Result searchById(Integer id) {
+        if (stuffRepository.findById(id).isPresent()) {
+            return ResultUtil.success(stuffRepository.findById(id).get());
+        } else {
+            throw new StuffException(ResultEnum.ID_NOT_EXIST);
+        }
+    }
+
+    public Result searchByName(String name) {
+        return ResultUtil.success(stuffRepository.findStuffsByName(name));
+    }
+
+    public Result deleteById(Integer id) {
+        if (stuffRepository.findById(id).isPresent()) {
+            stuffRepository.deleteById(id);
+            return ResultUtil.success();
+        } else {
+            throw new StuffException(ResultEnum.ID_NOT_EXIST);
+        }
+    }
+
+    public Result updateById(Stuff stuff) {
+        if (stuffRepository.findById(stuff.getId()).isPresent()) {
+            return ResultUtil.success(stuffRepository.save(stuff));
+        } else {
+            throw new StuffException(ResultEnum.ID_NOT_EXIST);
+        }
     }
 }

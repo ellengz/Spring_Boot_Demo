@@ -41,7 +41,7 @@ public class StuffController {
 
     // update by id
     @PutMapping(value = "/stuff/{id}")
-    public Stuff stuffUpdate(@PathVariable("id") Integer id,
+    public Result stuffUpdate(@PathVariable("id") Integer id,
                              @RequestParam("name") String name,
                              @RequestParam("quantity") Integer quantity){
 
@@ -49,14 +49,13 @@ public class StuffController {
         stuff.setId(id);
         stuff.setName(name);
         stuff.setQuantity(quantity);
-
-        return stuffRepository.save(stuff);
+        return stuffService.updateById(stuff);
     }
 
     // delete by id
     @DeleteMapping(value = "/stuff/{id}")
-    public void stuffDelete(@PathVariable("id") Integer id){
-        stuffRepository.deleteById(id);
+    public Result stuffDelete(@PathVariable("id") Integer id){
+        return stuffService.deleteById(id);
     }
 
     // search by name
@@ -65,6 +64,7 @@ public class StuffController {
         return stuffService.searchByName(name);
     }
 
+    // @Transactional test case
     // add three stuffs (3rd is illegal)
     // no records inserted, however id still increased
     @PostMapping(value = "stuff/addMul")

@@ -8,6 +8,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @Aspect
 @Component
@@ -48,7 +49,7 @@ public class HttpAspect {
     }
 
     @AfterReturning(returning = "object", pointcut = "log()")
-    public void doAfterReturning(Object object) {
+    public void doAfterReturning(Optional object) {
         logger.info("response={}", object.toString());
     }
 }

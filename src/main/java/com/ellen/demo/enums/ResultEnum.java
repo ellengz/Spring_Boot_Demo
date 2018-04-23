@@ -5,7 +5,7 @@ public enum ResultEnum {
     SUCCESS(0, "Success"),
     QUANTITY_TOO_BIG(100, "Please choose a quantity from [0,99]"),
     QUANTITY_TOO_SMALL(101, "Please choose a quantity from [0,99]"),
-    ILLEGAL_NAME(200, "Please choose an alphabetical name"),
+    ILLEGAL_NAME(200, "Please choose a name made up of only numbers and letters"),
     ID_NOT_EXIST(300, "ID not exist"),
 
     ;

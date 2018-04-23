@@ -16,7 +16,8 @@ public class ExceptionHandle {
     private final static Logger logger = LoggerFactory.getLogger(ExceptionHandle.class);
 
     /**
-     * capture and handle thrown exceptions
+     * capture and handle Exception which was thrown by the system
+     * use ResultUtil to generate Result
      * @param e
      * @return Result
      */
