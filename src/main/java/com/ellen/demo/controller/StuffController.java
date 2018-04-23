@@ -23,8 +23,8 @@ public class StuffController {
 
     // search all
     @GetMapping(value = "/stuff")
-    public List<Stuff> stuffList(){
-        return stuffRepository.findAll();
+    public Result stuffList(){
+        return stuffService.findAll();
     }
 
     // add one
@@ -35,8 +35,8 @@ public class StuffController {
 
     // search by id
     @GetMapping(value = "/stuff/{id}")
-    public Stuff stuffSearch(@PathVariable("id") Integer id){
-        return stuffRepository.findById(id).get();
+    public Result stuffSearch(@PathVariable("id") Integer id){
+        return stuffService.searchById(id);
     }
 
     // update by id
@@ -61,8 +61,8 @@ public class StuffController {
 
     // search by name
     @GetMapping(value = "/stuff/name/{name}")
-    public List<Stuff> stuffSearchByName(@PathVariable("name") String name){
-        return stuffRepository.findStuffsByName(name);
+    public Result stuffSearchByName(@PathVariable("name") String name){
+        return stuffService.searchByName(name);
     }
 
     // add three stuffs (3rd is illegal)

@@ -2,7 +2,11 @@ package com.ellen.demo.utils;
 
 import com.ellen.demo.domain.Result;
 import com.ellen.demo.enums.ResultEnum;
+import com.ellen.demo.exception.StuffException;
 
+/**
+ * create Result
+ */
 public class ResultUtil {
 
     public static Result success(Object object) {
@@ -17,10 +21,10 @@ public class ResultUtil {
         return success(null);
     }
 
-    public static Result error(Integer code, String msg) {
+    public static Result error (StuffException stuffException) {
         Result result = new Result();
-        result.setCode(code);
-        result.setMsg(msg);
+        result.setCode(stuffException.getCode());
+        result.setMsg(stuffException.getMessage());
         return result;
     }
 }

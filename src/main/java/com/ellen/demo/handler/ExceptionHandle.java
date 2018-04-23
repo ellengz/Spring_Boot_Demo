@@ -15,15 +15,21 @@ public class ExceptionHandle {
 
     private final static Logger logger = LoggerFactory.getLogger(ExceptionHandle.class);
 
+    /**
+     * capture and handle thrown exceptions
+     * @param e
+     * @return Result
+     */
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Result handle(Exception e) {
         if (e instanceof StuffException) {
             StuffException stuffException = (StuffException) e;
-            return ResultUtil.error(stuffException.getCode(),stuffException.getMessage());
+            return ResultUtil.error(stuffException);
         } else {
             logger.error("[SYSTEM_ERROR] {}", e);
-            return ResultUtil.error(ResultEnum.UNKNOWN_ERROR.getCode(),ResultEnum.UNKNOWN_ERROR.getMsg());
+            StuffException stuffException = new StuffException(ResultEnum.UNKNOWN_ERROR);
+            return ResultUtil.error(stuffException);
         }
     }
 }
