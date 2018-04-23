@@ -1,13 +1,14 @@
 package com.ellen.demo.utils;
 
 import com.ellen.demo.domain.Result;
+import com.ellen.demo.enums.ResultEnum;
 
 public class ResultUtil {
 
     public static Result success(Object object) {
         Result result = new Result();
-        result.setCode(1);
-        result.setMsg("success");
+        result.setCode(ResultEnum.SUCCESS.getCode());
+        result.setMsg(ResultEnum.SUCCESS.getMsg());
         result.setData(object);
         return result;
     }

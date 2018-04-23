@@ -29,12 +29,8 @@ public class StuffController {
 
     // add one
     @PostMapping(value = "/stuff")
-    public Result<Stuff> stuffAdd(@Valid Stuff stuff, BindingResult bindingResult){
-        Result result = new Result();
-        if (bindingResult.hasErrors()) {
-            return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
-        }
-       return ResultUtil.success(stuffRepository.save(stuff));
+    public Result stuffAdd(Stuff stuff) throws Exception {
+       return stuffService.addOne(stuff);
     }
 
     // search by id

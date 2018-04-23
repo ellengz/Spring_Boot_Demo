@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Stuff {
@@ -23,7 +24,8 @@ public class Stuff {
                 '}';
     }
 
-    @Max(value = 99, message = "illegal quantity")
+    @Max(value = 99, message = "illegal quantity: >99")
+    @Min(value = 0, message = "illegal quantity: <0 ")
     private Integer quantity;
 
     public Stuff(){
