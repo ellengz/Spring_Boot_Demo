@@ -29,7 +29,7 @@ public class StuffController {
 
     // add one
     @PostMapping(value = "/stuff")
-    public Result stuffAdd(Stuff stuff) throws Exception {
+    public Result stuffAdd(Stuff stuff){
        return stuffService.addOne(stuff);
     }
 
@@ -65,10 +65,10 @@ public class StuffController {
         return stuffRepository.findStuffsByName(name);
     }
 
-    // add two stuffs (one illegal)
+    // add three stuffs (3rd is illegal)
     // no records inserted, however id still increased
     @PostMapping(value = "stuff/addMul")
-    public void addMul(){
-        stuffService.addMultiple();
+    public List<Result> addMul(){
+        return stuffService.addMultiple();
     }
 }
