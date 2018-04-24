@@ -67,7 +67,7 @@ server:
 ```
 ### AOP
 * @Pointcut
-* @Before - methods below under @Before shows how to understand a HttpServletRequest
+* @Before - methods below under @Before show how to understand a HttpServletRequest
 * @After
 * @AfterReturning
 ```java
