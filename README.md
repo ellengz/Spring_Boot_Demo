@@ -1,7 +1,7 @@
 # Spring Boot Demo
 
 ## About
-A Spring Boot practice project based on online courses https://www.imooc.com/learn/810, https://www.imooc.com/learn/767 
+A Spring Boot practice project based on online courses https://www.imooc.com/learn/810, https://www.imooc.com/learn/767  
 Functions include:  
 * CRUD for model "Stuff"  
 * Global exception handling
