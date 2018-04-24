@@ -16,9 +16,6 @@ import java.util.List;
 public class StuffController {
 
     @Autowired
-    private StuffRepository stuffRepository;
-
-    @Autowired
     private StuffService stuffService;
 
     // search all
