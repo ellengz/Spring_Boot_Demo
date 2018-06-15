@@ -5,9 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 
 @Entity
-public class Stuff {
+public class Stuff implements Serializable{
 
     @Id
     @GeneratedValue

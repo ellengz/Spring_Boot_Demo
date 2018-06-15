@@ -1,6 +1,8 @@
 package com.ellen.demo.domain;
 
-public class Result<T> {
+import java.io.Serializable;
+
+public class Result<T> implements Serializable{
 
     /** error code */
     private Integer code;

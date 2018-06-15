@@ -2,14 +2,10 @@ package com.ellen.demo.controller;
 
 import com.ellen.demo.domain.Result;
 import com.ellen.demo.domain.Stuff;
-import com.ellen.demo.repository.StuffRepository;
 import com.ellen.demo.service.StuffService;
-import com.ellen.demo.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController

@@ -7,6 +7,9 @@ import com.ellen.demo.exception.StuffException;
 import com.ellen.demo.repository.StuffRepository;
 import com.ellen.demo.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,6 +71,7 @@ public class StuffService {
         return results;
     }
 
+    @Cacheable(value = "stuff", key = "#id")
     public Result searchById(Integer id) {
         if (stuffRepository.findById(id).isPresent()) {
             return ResultUtil.success(stuffRepository.findById(id).get());
@@ -80,6 +84,7 @@ public class StuffService {
         return ResultUtil.success(stuffRepository.findStuffsByName(name));
     }
 
+    @CacheEvict(value = "stuff", key = "#id")
     public Result deleteById(Integer id) {
         if (stuffRepository.findById(id).isPresent()) {
             stuffRepository.deleteById(id);
@@ -89,6 +94,7 @@ public class StuffService {
         }
     }
 
+    @CachePut(value = "stuff", key = "#stuff.id")
     public Result updateById(Stuff stuff) {
         if (stuffRepository.findById(stuff.getId()).isPresent()) {
             return ResultUtil.success(stuffRepository.save(stuff));
